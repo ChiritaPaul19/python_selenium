@@ -18,6 +18,7 @@ def driver(request):
         my_webdriver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
     else:
         raise TypeError(f"Expected 'chrome' or 'firefox', but got {browser}")
+    my_webdriver.implicitly_wait(5)
     yield my_webdriver
     # After
     print(f"\nClosing {browser} webdriver")
