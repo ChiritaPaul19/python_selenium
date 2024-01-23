@@ -24,7 +24,14 @@ class BasePage:
         wait = WebDriverWait(self._driver, time_to_wait)
         wait.until(ec.visibility_of_element_located(locator))
 
-    def is_displayed(self, locator: tuple):
+    def _open_url(self, url: str):
+        self._driver.get(url)
+
+    def _get_text(self, locator: tuple, time: int = 5) -> str:
+        self._wait_until_element_is_visible(locator, time)
+        return self._find(locator).text
+
+    def _is_displayed(self, locator: tuple):
         try:
             return self._find(locator).is_displayed()
         except NoSuchElementException:

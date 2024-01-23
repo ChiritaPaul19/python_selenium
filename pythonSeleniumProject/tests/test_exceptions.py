@@ -17,7 +17,7 @@ class TestExceptions:
         wait.until(ec.presence_of_element_located((By.XPATH, "//div[@id='row2']/input")))
         # Verify that row2 is displayed
         row2_input = driver.find_element(By.XPATH, "//div[@id='row2']/input")
-        assert row2_input.is_displayed(), "Row 2 is displayed"
+        assert row2_input._is_displayed(), "Row 2 is displayed"
 
     @pytest.mark.exceptions
     def test_secondRowFunctionality(self, driver):
@@ -31,7 +31,7 @@ class TestExceptions:
         wait.until(ec.presence_of_element_located((By.XPATH, "//div[@id='row2']/input")))
         # Verify that row2 is displayed
         row2_input = driver.find_element(By.XPATH, "//div[@id='row2']/input")
-        assert row2_input.is_displayed(), "Row 2 is displayed but it is not"
+        assert row2_input._is_displayed(), "Row 2 is displayed but it is not"
         # Insert text into row2 field
         row2_input.send_keys("Pasta")
         # Click Save button
@@ -49,19 +49,19 @@ class TestExceptions:
         edit_button.click()
         # Click on input and change text
         row1_input = driver.find_element(By.CSS_SELECTOR, "input.input-field")
-        assert row1_input.is_displayed()
+        assert row1_input._is_displayed()
         row1_input.clear()
         row1_input.send_keys("Pasta")
         # Click Save button
         driver.find_element(By.XPATH, "//div[@id='row1']/button[@name='Save']").click()
         confirmation_popup = driver.find_element(By.CSS_SELECTOR, "div#confirmation")
-        assert confirmation_popup.is_displayed()
+        assert confirmation_popup._is_displayed()
 
     def test_instructionTabDisappears(self, driver):
         # Open page
         driver.get("https://practicetestautomation.com/practice-test-exceptions/")
         instruction_tab = driver.find_element(By.CSS_SELECTOR, "p#instructions")
-        assert instruction_tab.is_displayed()
+        assert instruction_tab._is_displayed()
         # Add button
         add_button = driver.find_element(By.ID, "add_btn")
         add_button.click()

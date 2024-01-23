@@ -28,5 +28,5 @@ class TestPositiveScenarios:
 
         assert current_url.__contains__("logged-in-successfully")
         assert not current_url.__contains__("logged-out-successfully")
-        assert success_message.is_displayed()
-        assert logout_button.is_displayed()
+        assert success_message._is_displayed()
+        assert logout_button._is_displayed()

@@ -32,7 +32,7 @@ class TestNegativeScenarios:
 
         assert current_url.__contains__("practice-test-login")
         assert not current_url.__contains__("logged-in-successfully")
-        assert error_message.is_displayed()
+        assert error_message._is_displayed()
 
     @pytest.mark.login
     @pytest.mark.negative
@@ -59,4 +59,4 @@ class TestNegativeScenarios:
 
         assert current_url.__contains__("practice-test-login")
         assert not current_url.__contains__("logged-in-successfully")
-        assert error_message.is_displayed()
+        assert error_message._is_displayed()
